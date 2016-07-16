@@ -1,8 +1,8 @@
 /*
 by default, the default form adds some surrounding space, this cancels it
 */
-.content div.form-item,
-.content div.content {
+#user-login-form .content div.form-item,
+#user-login-form .content div.content {
   margin: 0; padding: 0;
 }
 
