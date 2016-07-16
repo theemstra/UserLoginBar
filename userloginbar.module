@@ -88,7 +88,14 @@ function userloginbar_form_alter(&$form, $form_state, $form_id) {
   switch ($form_id) {
     case 'user_login_block':
       $destination = drupal_get_destination();
-      $form['#action'] = '?q=user&destination=' . $destination['destination'];
+	  $path = 'user';
+	  $query = drupal_get_destination();
+	  if (module_exists('securepages') && variable_get('securepages_enable', FALSE)) {
+	    $form['#action'] = securepages_url($path, array('query' => $query, 'secure' => TRUE));
+      }
+      else {
+	    $form['#action'] = url($path, array('query' => $query));
+	  }
       $form['#method'] = 'post';
       $form['form_id'] = array(
           '#type' => 'hidden',
