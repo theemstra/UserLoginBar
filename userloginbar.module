@@ -73,8 +73,7 @@ function theme_userloginbar() {
     return;
   }
   if (!$user->uid) {
-    $output .= drupal_render(drupal_get_form('user_login_block'));
-	$get_form_output = drupal_get_form('user_login_block');
+    $get_form_output = drupal_get_form('user_login_block');
 	$output .= drupal_render($get_form_output);
   } else if (!variable_get('disable_welcome_box', FALSE)) {
     $output .= t('<p class="user-info">Hi !user, welcome back.</p>', array('!user' => theme('username', array('account' => $user))));
