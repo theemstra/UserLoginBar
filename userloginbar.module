@@ -14,9 +14,16 @@ function userloginbar_menu() {
       'description' => t('Configure userloginbar welcome box.'),
       'page callback' => 'drupal_get_form',
       'page arguments' => array('userloginbar_admin'),
-      'access arguments' => array('administrator content'),
+      'access arguments' => array('administer userloginbar'),
   );
   return $items;
+}
+
+/**
++ * Implementation of hook_perm()
++ */
+function userloginbar_perm() {
+	return array("administer userloginbar");
 }
 
 /**
